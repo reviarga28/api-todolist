@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const listSchema = new mongoose.Schema(
+const desSchema = new mongoose.Schema(
   {
-    description: {
+    title: {
       type: String,
       required: true,
     },
@@ -11,6 +11,16 @@ const listSchema = new mongoose.Schema(
       enum: ["sudah", "belum"],
       default: "belum",
     },
+  }
+)
+
+const listSchema = new mongoose.Schema(
+  {
+    name:{
+      type :String,
+      required: true
+    },
+    description:[desSchema],
   },
   {
     timestamps: true,

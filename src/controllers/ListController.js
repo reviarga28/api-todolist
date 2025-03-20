@@ -19,10 +19,10 @@ export const GetListById = async (req, res) => {
   }
 };
 export const PostList = async (req, res) => {
-  const { description, action } = req.body;
+  const {name ,description } = req.body;
   const newList = new List({
     description,
-    action,
+    name,
   });
   try {
     await newList.save();
