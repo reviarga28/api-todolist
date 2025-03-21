@@ -1,26 +1,24 @@
 import mongoose from "mongoose";
 
-const desSchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    action: {
-      type: String,
-      enum: ["sudah", "belum"],
-      default: "belum",
-    },
-  }
-)
+const desSchema = new mongoose.Schema({
+  listId: { type: mongoose.Schema.Types.ObjectId, ref: "desc" },
+  title: {
+    type: String,
+    required: true,
+  },
+  action: {
+    type: String,
+    enum: ["sudah", "belum"],
+    default: "belum",
+  },
+});
 
 const listSchema = new mongoose.Schema(
   {
-    name:{
-      type :String,
-      required: true
+    name: {
+      type: String,
+      required: true,
     },
-    description:[desSchema],
   },
   {
     timestamps: true,
@@ -28,5 +26,6 @@ const listSchema = new mongoose.Schema(
 );
 
 const ListModel = mongoose.model("List", listSchema);
+const DesModel = mongoose.model("desc", desSchema);
 
-export { ListModel as List };
+export { ListModel as List, DesModel as Desc };
